@@ -16,5 +16,39 @@ namespace ExcelTutorial
         {
             InitializeComponent();
         }
+
+        private void  Form1_Load(object sender, EventArgs e)
+        {
+
+            // OpenFile();
+            // WriteData();
+            // OpenFile();
+            CreateNewExcel("TestNewExcel");
+        }
+
+        private void CreateNewExcel(string fileName)
+        {
+            Excel excel = new Excel();
+            excel.CreateNewFile();
+            excel.CreateNewSheet();
+            excel.SaveAs(@""+ fileName);
+            excel.Close();
+        }
+
+        private void OpenFile()
+        {
+            // D:\Projects\VSProjects\ExcelTutorial\ExcelTutorial\
+            Excel excel = new Excel(@"Test.xlsx", 1);
+            MessageBox.Show(excel.ReadCell(0, 0));
+        }
+
+        public void WriteData()
+        {
+            Excel excel = new Excel(@"Test.xlsx", 1);
+            excel.WriteToCell(0, 0, "TEst4 WillChange");
+            excel.Save();
+            excel.SaveAs(@"Test2.xlsx");
+            excel.Close();
+        }
     }
 }
