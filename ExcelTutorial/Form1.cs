@@ -19,11 +19,10 @@ namespace ExcelTutorial
 
         private void  Form1_Load(object sender, EventArgs e)
         {
-
-            // OpenFile();
+            // OpenFile("Test", 1);
             // WriteData();
-            // OpenFile();
-            CreateNewExcel("TestNewExcel");
+            OpenFile("Test",1);
+            //CreateNewExcel("TestNewExcel");
         }
 
         private void CreateNewExcel(string fileName)
@@ -35,11 +34,24 @@ namespace ExcelTutorial
             excel.Close();
         }
 
-        private void OpenFile()
+        private void OpenFile(string fileName, int sheetNumber)
         {
             // D:\Projects\VSProjects\ExcelTutorial\ExcelTutorial\
-            Excel excel = new Excel(@"Test.xlsx", 1);
-            MessageBox.Show(excel.ReadCell(0, 0));
+            Excel excel = new Excel(@""+ fileName, sheetNumber);
+            //MessageBox.Show(excel.ReadCell(0, 0));
+            try
+            {
+                excel.ProtectSheet("shuhratjan");
+                excel.Save();
+                excel.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.StackTrace);
+                excel.Close();
+            }
+
+
         }
 
         public void WriteData()

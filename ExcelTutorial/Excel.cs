@@ -73,5 +73,35 @@ namespace ExcelTutorial
             Worksheet temptsheet = workBook.Worksheets.Add(After: workSheet);
         }
 
+        public void SelectWorkSheet(int sheetNumber)
+        {
+            workSheet = workBook.Worksheets[sheetNumber];
+        }
+
+        public void DeleteWorkSheet(int sheetNumber)
+        {
+            workBook.Worksheets[sheetNumber].Delete();
+        }
+
+        public void ProtectSheet()
+        {
+            workSheet.Protect();
+        }
+        
+        public void ProtectSheet(string password)
+        {
+            workSheet.Protect(password);
+        }
+
+        public void UnProtectSheet()
+        {
+            workSheet.Unprotect();
+        }
+
+        public void UnProtectSheet(string password)
+        {
+            workSheet.Unprotect(password);
+        }
+
     }
 }
