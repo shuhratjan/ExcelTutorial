@@ -21,8 +21,19 @@ namespace ExcelTutorial
         {
             // OpenFile("Test", 1);
             // WriteData();
-            OpenFile("Test",1);
+            //OpenFile("Test",1);
             //CreateNewExcel("TestNewExcel");
+
+            // This code to Read from Range
+            //Excel excel = new Excel(@"Test",1);
+            //string [,] read = excel.ReadRange(1, 1, 500, 3);
+            //excel.Close();
+
+            // this code to write to Range
+            //Excel excel2 = new Excel(@"Test1", 1);
+            //excel2.WriteRange(1, 1, 500, 3, read);
+            //excel2.Save();
+            //excel2.Close();
         }
 
         private void CreateNewExcel(string fileName)
@@ -41,7 +52,7 @@ namespace ExcelTutorial
             //MessageBox.Show(excel.ReadCell(0, 0));
             try
             {
-                excel.ProtectSheet("shuhratjan");
+               // excel.ProtectSheet("passwpr");
                 excel.Save();
                 excel.Close();
             }

@@ -103,5 +103,28 @@ namespace ExcelTutorial
             workSheet.Unprotect(password);
         }
 
+        public string[,] ReadRange(int startRow, int startCol, int endRow, int endCol)
+        {
+            Range range = (Range)workSheet.Range[workSheet.Cells[startRow, startCol], workSheet.Cells[endRow, endCol]];
+            object[,] objectHolder = range.Value2;
+            string[,] stringToReturn = new string[endRow - startRow+1, endCol - startCol+1];
+
+            for(int i=1; i<=endRow-startRow+1; i++)
+            {
+                for(int j=1; j<=endCol-startCol+1; j++)
+                {
+                    stringToReturn[i - 1, j - 1] = objectHolder[i, j].ToString();
+                }
+            }
+
+            return stringToReturn;
+        }
+
+        public void WriteRange(int startRow, int startCol, int endRow, int endCol, string [,] textToWrite)
+        {
+            Range range = (Range)workSheet.Range[workSheet.Cells[startRow, startCol], workSheet.Cells[endRow, endCol]];
+            range.Value2 = textToWrite;
+        }
+
     }
 }
